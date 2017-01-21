@@ -24,7 +24,7 @@ public class MoveObjekts : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void FixedUpdate()
+    public void Update()
     {
         if (health <= 0)
         {
