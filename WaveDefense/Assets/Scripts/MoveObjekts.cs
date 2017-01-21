@@ -75,6 +75,7 @@ public class MoveObjekts : MonoBehaviour
         for (var i = 0; i < EnemyCount; i++)
         {
             GameObject myGameObject = Instantiate(enemyPrefab);
+            myGameObject.transform.position = new Vector3(-10, -4, 0);
             var myscript = myGameObject.GetComponent<Enemy>();
             Enemies.Add(myscript);
             myscript.Die += playerStats.OnEnemyDeath;
