@@ -12,13 +12,13 @@ public class CameraMovement : MonoBehaviour {
 	void Update ()
     {
         var position = gameObject.transform.position;
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKey("a"))
             position += new Vector3(-1, 0, 0);
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKey("s"))
             position += new Vector3(0, -1, 0);
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKey("d"))
             position += new Vector3(1, 0, 0);
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKey("w"))
             position += new Vector3(0, 1, 0);
 
         gameObject.transform.position = position;
