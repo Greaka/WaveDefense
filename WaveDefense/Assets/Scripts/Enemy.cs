@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     public bool isDead = false;
 
+    public int Speicherpunkt;
+
 	// Use this for initialization
     public void Start ()
     {
