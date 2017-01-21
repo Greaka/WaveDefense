@@ -1,50 +1,66 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Tiled2Unity;
 using UnityEngine;
-using System;
-using UnityEngine.SceneManagement;
 
-public class MapInfo : MonoBehaviour {
+public class MapInfo : MonoBehaviour
+{
+    private static MapInfo _instance;
+    private TiledMap tiledMap;
 
-    private static PlayerStats _instance;
-
-    public static int PlayerHealth = 100;
-
-    public static int PlayerWealth = 0;
-
-    public static PlayerStats Instance
+    public static MapInfo Instance
     {
         get
         {
             if (_instance != null)
                 return _instance;
-            var CharacterLoadout = new GameObject("PlayerStats");
-            _instance = CharacterLoadout.AddComponent<PlayerStats>();
+            var CharacterLoadout = new GameObject("MapInfo");
+            _instance = CharacterLoadout.AddComponent<MapInfo>();
             return _instance;
         }
         private set { }
     }
 
-    public void OnEnemyDeath(Enemy instance)
+    public static Vector3 Position;
+    public static Quaternion Rotation;
+    public static Vector3 Scale;
+
+    public static TiledMap.MapOrientation Orientation = TiledMap.MapOrientation.Orthogonal;
+    public static TiledMap.MapStaggerAxis StaggerAxis = TiledMap.MapStaggerAxis.X;
+    public static TiledMap.MapStaggerIndex StaggerIndex = TiledMap.MapStaggerIndex.Odd;
+    public static int HexSideLength = 0;
+
+    public static int NumLayers = 0;
+    public static int NumTilesWide = 0;
+    public static int NumTilesHigh = 0;
+    public static int TileWidth = 0;
+    public static int TileHeight = 0;
+    public static float ExportScale = 1.0f;
+
+    // Note: Because maps can be isometric and staggered we simply can't multply tile width (or height) by number of tiles wide (or high) to get width (or height)
+    // We rely on the exporter to calculate the width and height of the map
+    public static int MapWidthInPixels = 0;
+    public static int MapHeightInPixels = 0;
+
+    public void Start()
     {
-        if (instance.Health > 0)
-            PlayerHealth -= instance.Damage;
-        else
-            PlayerWealth += instance.Bounty;
+        tiledMap = GetComponent<TiledMap>();
     }
 
-    public void Awake()
+    public void Update()
     {
-        if (gameObject.gameObject == null)
-            DontDestroyOnLoad(gameObject);
-    }
-    private void Update()
-    {
-        if (PlayerHealth <= 0)
-        {
-            Console.WriteLine("GAMEOVER");
-            SceneManager.LoadScene("Lost");
-        }
-
+        Position = gameObject.transform.position;
+        Rotation = gameObject.transform.rotation;
+        Scale = gameObject.transform.localScale;
+        Orientation = tiledMap.Orientation;
+        StaggerAxis = tiledMap.StaggerAxis;
+        StaggerIndex = tiledMap.StaggerIndex;
+        HexSideLength = tiledMap.HexSideLength;
+        NumLayers = tiledMap.NumLayers;
+        NumTilesWide = tiledMap.NumTilesWide;
+        NumTilesHigh = tiledMap.NumTilesHigh;
+        TileWidth = tiledMap.TileWidth;
+        TileHeight = tiledMap.TileHeight;
+        ExportScale = tiledMap.ExportScale;
+        MapWidthInPixels = tiledMap.MapWidthInPixels;
+        MapHeightInPixels = tiledMap.MapHeightInPixels;
     }
 }

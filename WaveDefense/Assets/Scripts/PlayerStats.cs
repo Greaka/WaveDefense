@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
         if (gameObject.gameObject == null)
             DontDestroyOnLoad(gameObject);
     }
-    private void Update()
+    public void Update()
     {
         if (PlayerHealth <= 0)
         {
