@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveObjekts : MonoBehaviour
 {
-    public int speed = 2;
-    int n = 0;
-    public int health = 100;
+    public int speed;
+    public int EnemyCount;
+    public int health;
+    public GameObject enemyPrefab;
+
+
+
     public Vector3[] positiona = new Vector3[5];
+
+    public List<GameObject> Enemies = new List<GameObject>();
 
     //public GameObject Waypoint;
 
@@ -17,9 +24,11 @@ public class MoveObjekts : MonoBehaviour
         //hier die Weg punkte eintragen die die minions laufen sollen
 
 
-
-
-
+        for (var i = 0; i < EnemyCount; i++)
+        {
+            GameObject myGameObject = Instantiate(enemyPrefab);
+            Enemies.Add(myGameObject);
+        }
 
     }
 
@@ -36,7 +45,7 @@ public class MoveObjekts : MonoBehaviour
         int x = (int)position.x;
         int y = (int)position.y;
         position.x = x;
-        position.y = y;
+        position.y = y;/*
         if (n < positiona.Length)
         {
             for (int i = speed; i > 0; i--)
@@ -69,7 +78,7 @@ public class MoveObjekts : MonoBehaviour
 
             }
 
-        }
+        }*/
     }
 }
 
