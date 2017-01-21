@@ -36,12 +36,12 @@ public class MoveObjekts : MonoBehaviour
             }
 
             enemy.transform.position = a;
-            if (a == b&&enemy.Speicherpunkt<positiona.Length-1)
+            if (a == b&&enemy.Speicherpunkt<=positiona.Length-1)
             {
                 enemy.Speicherpunkt++;
             }
 
-            if (a == b && enemy.Speicherpunkt == positiona.Length - 1)
+            if (a == b && enemy.Speicherpunkt == positiona.Length )
             {
                 enemy.isDead = true;
             }
