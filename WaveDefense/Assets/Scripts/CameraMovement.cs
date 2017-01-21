@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         var position = gameObject.transform.position;
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") && Camera.main.transform.position.x>=0)
             position += new Vector3(-1, 0, 0) * Camera.main.orthographicSize / 15;
         if (Input.GetKey("s"))
             position += new Vector3(0, -1, 0) * Camera.main.orthographicSize / 15;
@@ -22,7 +22,9 @@ public class CameraMovement : MonoBehaviour
             position += new Vector3(1, 0, 0) * Camera.main.orthographicSize / 15;
         if (Input.GetKey("w"))
             position += new Vector3(0, 1, 0) * Camera.main.orthographicSize / 15;
-
+        position.x = Mathf.Clamp(position.x, 20F,26F);
+        position.y = Mathf.Clamp(position.y, -45F, -15F);
+        
         gameObject.transform.position = position;
 
         const int orthographicSizeMin = 8;
