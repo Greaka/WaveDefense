@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     public int Bounty;
 
+    public int Damage;
+
     public event Death Die;
 
     public delegate void Death(Enemy instance);
