@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
     private static PlayerStats _instance;
 
-    public int PlayerHealth;
+    public static int PlayerHealth = 100;
 
-    public int PlayerWealth;
+    public static int PlayerWealth = 0;
 
     public static PlayerStats Instance
     {
@@ -23,11 +25,24 @@ public class PlayerStats : MonoBehaviour
 
     public void OnEnemyDeath(Enemy instance)
     {
-        PlayerWealth += instance.Bounty;
+        if (instance.Health > 0)
+            PlayerHealth -= instance.Damage;
+        else
+            PlayerWealth += instance.Bounty;
     }
 
     public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (gameObject.gameObject == null)
+            DontDestroyOnLoad(gameObject);
+    }
+    public void Update()
+    {
+        if (PlayerHealth <= 0)
+        {
+            Console.WriteLine("GAMEOVER");
+            SceneManager.LoadScene("Lost");
+        }
+
     }
 }

@@ -12,11 +12,15 @@ public class Enemy : MonoBehaviour
 
     public int Bounty;
 
+    public int Damage;
+
     public event Death Die;
 
     public delegate void Death(Enemy instance);
 
     public bool isDead = false;
+
+    public int Speicherpunkt;
 
 	// Use this for initialization
     public void Start ()

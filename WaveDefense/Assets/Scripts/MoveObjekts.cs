@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VR;
+
 
 public class MoveObjekts : MonoBehaviour
 {
@@ -12,7 +14,6 @@ public class MoveObjekts : MonoBehaviour
     public int health;
     public GameObject enemyPrefab;
     int time;               // mit absicht nicht public
-    int[] n = new int[100]; //Zählarray
 
     private PlayerStats playerStats;
 
@@ -21,6 +22,53 @@ public class MoveObjekts : MonoBehaviour
     public List<Enemy> Enemies = new List<Enemy>();
 
     public List<Enemy> DeadEnemies = new List<Enemy>();
+
+    private void Aktualisierung(Enemy enemy)
+    {
+        Vector3 a = enemy.transform.position;
+        Vector3 b = positiona[enemy.Speicherpunkt];
+        for (int i =1; i > 0; i--)
+        {
+            if (a != b)
+            {
+
+                a = Onestep(a, b);
+            }
+
+            enemy.transform.position = a;
+            if (a == b&&enemy.Speicherpunkt<=positiona.Length-1)
+            {
+                enemy.Speicherpunkt++;
+            }
+
+            if (a == b && enemy.Speicherpunkt == positiona.Length )
+            {
+                enemy.isDead = true;
+            }
+        }
+
+        enemy.Update();
+    }
+    private Vector3 Onestep(Vector3 a, Vector3 b)
+    {
+        if (a.x < b.x)
+        {
+            a.x = a.x + 1;
+        }
+        else if (a.x > b.x)
+        {
+            a.x = a.x - 1;
+        }
+        else if (a.y < b.y)
+        {
+            a.y = a.y + 1;
+        }
+        else if (a.y > b.y)
+        {
+            a.y = a.y - 1;
+        }
+        return a;
+    }
 
     //public GameObject Waypoint;
 
@@ -33,6 +81,7 @@ public class MoveObjekts : MonoBehaviour
         for (var i = 0; i < EnemyCount; i++)
         {
             GameObject myGameObject = Instantiate(enemyPrefab);
+            myGameObject.transform.position = new Vector3(-10, -4, 0);
             var myscript = myGameObject.GetComponent<Enemy>();
             Enemies.Add(myscript);
             myscript.Die += playerStats.OnEnemyDeath;
@@ -44,73 +93,37 @@ public class MoveObjekts : MonoBehaviour
     public void EnemyDeath(Enemy instance)
     {
         DeadEnemies.Add(instance);
-        Enemies.Remove(instance);
     }
 
     // Update is called once per frame
     public void Update()
     {
-       
+        int i = 0;
+
         time++;
-        if (time % 3 == 1)
+        foreach (Enemy element in Enemies)
         {
-
-            for (int j = 0; j < EnemyCount; j++)
+            if (time > i * (10.0-speed))
             {
-
-                if (Enemies[j]!=null)
-                {
-                    Vector3 position = Enemies[j].transform.position;
-                    
-                    int x = (int)position.x;
-                    int y = (int)position.y;
-                    position.x = x;
-                    position.y = y;
-                    if (n[j] < positiona.Length)
-                    {
-                        if (time >= (j * 9))
-                            for (int i = speed; i > 0; i--)
-                            {
-                            if (position.x < positiona[n[j]].x)
-                            {
-                                position.x = position.x + 1;
-                            }
-                            else if (position.x > positiona[n[j]].x)
-                            {
-                                position.x = position.x - 1;
-                            }
-                            else if (position.y < positiona[n[j]].y)
-                            {
-                                position.y = position.y + 1;
-                            }
-                            else if (position.y > positiona[n[j]].y)
-                            {
-                                position.y = position.y - 1;
-                            }
-
-
-                            else if (position.x == positiona[n[j]].x && position.y == positiona[n[j]].y && n[j] == positiona.Length - 1)
-                            {
-                                    // hier müssen sich die minions noch auflösen
-                                    Sprite.Destroy(Enemies[j]);
-                                    //Enemies[j] = Enemies[j + 1];
-                                    
-                            }
-                            else if (position.x == positiona[n[j]].x && position.y == positiona[n[j]].y && n[j] < positiona.Length - 1)
-                            {
-                                n[j]++;
-                                  
-                            }
-
-                        Enemies[j].transform.position = position;
-
-                    }
-                }
-
-                }
+                Aktualisierung(element);
             }
+                i++;
+        }
+
+        foreach (var enemy in DeadEnemies)
+        {
+            enemy.Update();
+        }
+
+        while (DeadEnemies.Count > 0)
+        {
+            var enemy = DeadEnemies[0];
+            Enemies.Remove(enemy);
+            DeadEnemies.RemoveAt(0);
+            Destroy(enemy.gameObject);
         }
     }
 }
+    
 
 

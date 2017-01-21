@@ -9,6 +9,11 @@ namespace Tiled2Unity
 {
     public class TiledMap : MonoBehaviour
     {
+        public void Awake()
+        {
+            GetComponent<MapInfo>();
+        }
+
         public enum MapOrientation
         {
             Orthogonal,
