@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class PlayerStats : MonoBehaviour
         if (PlayerHealth <= 0)
         {
             Console.WriteLine("GAMEOVER");
-            
+            SceneManager.LoadScene("Lost");
         }
 
     }
