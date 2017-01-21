@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 0
-  range: 5
+  inRange: {fileID: 0}
 --- !u!114 &114587016951924866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 0
-  range: 5
+  inRange: {fileID: 0}
 --- !u!212 &212610785990478714
 SpriteRenderer:
   m_ObjectHideFlags: 1
