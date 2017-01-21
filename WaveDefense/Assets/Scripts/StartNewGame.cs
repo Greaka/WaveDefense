@@ -18,6 +18,6 @@ public class StartNewGame : MonoBehaviour
     //StartGameWhenTitlePressed
     private static void MouseClick()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Minionfeld");
     }
 }

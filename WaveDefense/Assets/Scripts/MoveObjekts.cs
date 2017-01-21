@@ -12,7 +12,7 @@ public class MoveObjekts : MonoBehaviour
     //public GameObject Waypoint;
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         //hier die Weg punkte eintragen die die minions laufen sollen
 
@@ -24,7 +24,7 @@ public class MoveObjekts : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void FixedUpdate()
     {
         if (health <= 0)
         {
