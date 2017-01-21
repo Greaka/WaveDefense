@@ -84,8 +84,9 @@ public class MoveObjekts : MonoBehaviour
 
                             else if (position.x == positiona[n[j]].x && position.y == positiona[n[j]].y && n[j] == positiona.Length - 1)
                             {
-                          // hier müssen sich die minions noch auflösen
-
+                                    // hier müssen sich die minions noch auflösen
+                                    Sprite.Destroy(Enemies[j]);
+                                    Enemies[j] = Enemies[j + 1];
                             }
                             else if (position.x == positiona[n[j]].x && position.y == positiona[n[j]].y && n[j] < positiona.Length - 1)
                             {
