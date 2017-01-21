@@ -55,7 +55,9 @@ MonoBehaviour:
   Health: 1
   Speed: 0
   Bounty: 10
+  Damage: 3
   isDead: 0
+  Speicherpunkt: 0
 --- !u!212 &212204594997945452
 SpriteRenderer:
   m_ObjectHideFlags: 1
