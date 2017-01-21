@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -33,5 +34,14 @@ public class PlayerStats : MonoBehaviour
     {
         if (gameObject.gameObject == null)
             DontDestroyOnLoad(gameObject);
+    }
+    private void Update()
+    {
+        if (PlayerHealth <= 0)
+        {
+            Console.WriteLine("GAMEOVER");
+            
+        }
+
     }
 }
