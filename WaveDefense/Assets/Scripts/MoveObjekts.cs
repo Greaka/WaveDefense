@@ -45,13 +45,11 @@ public class MoveObjekts : MonoBehaviour
         time++;
         if (time % 3 == 1)
         {
-            if (health <= 0)
-            {
-                Sprite.Destroy(gameObject);
-            }
+
             for (int j = 0; j < EnemyCount; j++)
             {
-                if (true)
+
+                if (Enemies[j]!=null)
                 {
                     Vector3 position = Enemies[j].transform.position;
                     
@@ -86,7 +84,8 @@ public class MoveObjekts : MonoBehaviour
                             {
                                     // hier müssen sich die minions noch auflösen
                                     Sprite.Destroy(Enemies[j]);
-                                    Enemies[j] = Enemies[j + 1];
+                                    //Enemies[j] = Enemies[j + 1];
+                                    
                             }
                             else if (position.x == positiona[n[j]].x && position.y == positiona[n[j]].y && n[j] < positiona.Length - 1)
                             {
