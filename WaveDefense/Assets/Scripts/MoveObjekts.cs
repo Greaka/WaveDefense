@@ -18,9 +18,9 @@ public class MoveObjekts : MonoBehaviour
 
     public Vector3[] positiona = new Vector3[5];
 
-    public List<GameObject> Enemies = new List<GameObject>();
+    public List<Enemy> Enemies = new List<Enemy>();
 
-    public List<GameObject> DeadEnemies = new List<GameObject>();
+    public List<Enemy> DeadEnemies = new List<Enemy>();
 
     //public GameObject Waypoint;
 
@@ -33,8 +33,8 @@ public class MoveObjekts : MonoBehaviour
         for (var i = 0; i < EnemyCount; i++)
         {
             GameObject myGameObject = Instantiate(enemyPrefab);
-            Enemies.Add(myGameObject);
             var myscript = myGameObject.GetComponent<Enemy>();
+            Enemies.Add(myscript);
             myscript.Die += playerStats.OnEnemyDeath;
             myscript.Die += EnemyDeath;
         }
@@ -43,8 +43,8 @@ public class MoveObjekts : MonoBehaviour
 
     public void EnemyDeath(Enemy instance)
     {
-        DeadEnemies.Add(instance.gameObject);
-        Enemies.Remove(instance.gameObject);
+        DeadEnemies.Add(instance);
+        Enemies.Remove(instance);
     }
 
     // Update is called once per frame
