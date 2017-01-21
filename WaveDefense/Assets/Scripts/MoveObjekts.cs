@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VR;
 
 public class MoveObjekts : MonoBehaviour
 {
@@ -10,11 +12,13 @@ public class MoveObjekts : MonoBehaviour
     public int health;
     public GameObject enemyPrefab;
 
-
+    private PlayerStats playerStats;
 
     public Vector3[] positiona = new Vector3[5];
 
     public List<GameObject> Enemies = new List<GameObject>();
+
+    public List<GameObject> DeadEnemies = new List<GameObject>();
 
     //public GameObject Waypoint;
 
@@ -22,14 +26,23 @@ public class MoveObjekts : MonoBehaviour
     public void Start()
     {
         //hier die Weg punkte eintragen die die minions laufen sollen
-
+        playerStats = GetComponent<PlayerStats>();
 
         for (var i = 0; i < EnemyCount; i++)
         {
             GameObject myGameObject = Instantiate(enemyPrefab);
             Enemies.Add(myGameObject);
+            var myscript = myGameObject.GetComponent<Enemy>();
+            myscript.Die += playerStats.OnEnemyDeath;
+            myscript.Die += EnemyDeath;
         }
 
+    }
+
+    public void EnemyDeath(Enemy instance)
+    {
+        DeadEnemies.Add(instance.gameObject);
+        Enemies.Remove(instance.gameObject);
     }
 
     // Update is called once per frame

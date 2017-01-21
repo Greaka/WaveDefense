@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1457125038}
   - component: {fileID: 1457125037}
+  - component: {fileID: 1457125039}
   m_Layer: 0
   m_Name: EnemyMovement
   m_TagString: Untagged
@@ -208,6 +209,8 @@ MonoBehaviour:
   speed: 1
   EnemyCount: 5
   health: 100
+  enemyPrefab: {fileID: 1449604968664104, guid: 018f8e4697ceb91469c61fa8e2445e1d,
+    type: 2}
   positiona:
   - {x: 5, y: 5, z: 0}
   - {x: 10, y: 10, z: 0}
@@ -215,6 +218,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   Enemies: []
+  DeadEnemies: []
 --- !u!4 &1457125038
 Transform:
   m_ObjectHideFlags: 0
@@ -228,3 +232,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1457125039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457125036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904d1a1b29d5d5146adbb908ea5caedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealth: 0
+  PlayerWealth: 0
