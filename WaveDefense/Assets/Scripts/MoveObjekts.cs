@@ -27,7 +27,7 @@ public class MoveObjekts : MonoBehaviour
     {
         Vector3 a = Enemies.transform.position;
         Vector3 b = positiona[Enemies.Speicherpunkt];
-        for (int i = speed; i > 0; i--)
+        for (int i = 1; i > 0; i--)
         {
             if (a != b)
             {
@@ -98,7 +98,7 @@ public class MoveObjekts : MonoBehaviour
         time++;
         foreach (Enemy element in Enemies)
         {
-            if (time > i * 8)
+            if (time > i * (10.0-speed))
             {
                 Aktualisierung(element);
             }
