@@ -1,12 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class StartNewGame : MonoBehaviour {
+public class StartNewGame : MonoBehaviour
+{
+
+    public Button btn;
+
+    public void Start()
+    {
+        btn.onClick.AddListener(MouseClick);
+    }
 
     //StartGameWhenTitlePressed
-    private void OnMouseDown()
+    private static void MouseClick()
     {
-        Application.LoadLevel("");
+        SceneManager.LoadScene("");
     }
 }
