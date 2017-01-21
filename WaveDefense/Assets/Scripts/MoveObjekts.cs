@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,6 @@ public class MoveObjekts : MonoBehaviour
     public int health;
     public GameObject enemyPrefab;
     int time;               // mit absicht nicht public
-    int[] n = new int[100]; //Zählarray
 
     private PlayerStats playerStats;
 
@@ -23,11 +23,11 @@ public class MoveObjekts : MonoBehaviour
 
     public List<Enemy> DeadEnemies = new List<Enemy>();
 
-    private void Aktualisierung(Enemy Enemies)
+    private void Aktualisierung(Enemy enemy)
     {
-        Vector3 a = Enemies.transform.position;
-        Vector3 b = positiona[Enemies.Speicherpunkt];
-        for (int i = 1; i > 0; i--)
+        Vector3 a = enemy.transform.position;
+        Vector3 b = positiona[enemy.Speicherpunkt];
+        for (int i = speed; i > 0; i--)
         {
             if (a != b)
             {
@@ -35,13 +35,19 @@ public class MoveObjekts : MonoBehaviour
                 a = Onestep(a, b);
             }
 
-            Enemies.transform.position = a;
-            if (a == b&&Enemies.Speicherpunkt<positiona.Length-1)
+            enemy.transform.position = a;
+            if (a == b&&enemy.Speicherpunkt<positiona.Length-1)
             {
-                Enemies.Speicherpunkt++;
+                enemy.Speicherpunkt++;
+            }
+
+            if (a == b && enemy.Speicherpunkt == positiona.Length - 1)
+            {
+                enemy.isDead = true;
             }
         }
 
+        enemy.Update();
     }
     private Vector3 Onestep(Vector3 a, Vector3 b)
     {
@@ -87,7 +93,6 @@ public class MoveObjekts : MonoBehaviour
     public void EnemyDeath(Enemy instance)
     {
         DeadEnemies.Add(instance);
-        Enemies.Remove(instance);
     }
 
     // Update is called once per frame
@@ -104,13 +109,20 @@ public class MoveObjekts : MonoBehaviour
             }
                 i++;
         }
-        
 
+        foreach (var enemy in DeadEnemies)
+        {
+            enemy.Update();
+        }
 
+        while (DeadEnemies.Count > 0)
+        {
+            var enemy = DeadEnemies[0];
+            Enemies.Remove(enemy);
+            DeadEnemies.RemoveAt(0);
+            Destroy(enemy.gameObject);
+        }
     }
-
-
-
 }
     
 

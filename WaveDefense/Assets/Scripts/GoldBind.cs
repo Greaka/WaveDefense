@@ -10,12 +10,12 @@ public class GoldBind : MonoBehaviour
     // Use this for initialization
     public void Start()
     {
-        playerStats = GetComponent<PlayerStats>();
+        //playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     public void Update()
     {
-        GoldText.text = prefix + playerStats.PlayerHealth;
+        GoldText.text = prefix + PlayerStats.PlayerWealth;
     }
 }
