@@ -27,6 +27,7 @@ public class Tower_Angriff : MonoBehaviour {
         if (a_count > reloadtime)
         {
             mayattack = true;
+            a_count = 0;
         }
     }
 
@@ -36,9 +37,8 @@ public class Tower_Angriff : MonoBehaviour {
         {
             enemey = collider.gameObject.GetComponent<Enemy>();
             enemey.Health -= damage;
-            a_count = 0;
             mayattack = false;
-            // Debug.Log("Toll!");
+            //Debug.Log("Toll!");
         }
     }
 }

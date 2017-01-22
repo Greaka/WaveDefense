@@ -20,6 +20,8 @@ public class MapInfo : MonoBehaviour
         private set { }
     }
 
+    public static int Wave = 0;
+
     public static Vector3 Position;
     public static Quaternion Rotation;
     public static Vector3 Scale;

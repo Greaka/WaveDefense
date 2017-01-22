@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     public int Health;
 
-    public int maxHealth;
+    public double Delay;
 
     public float Speed;
 
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 	// Use this for initialization
     public void Start ()
     {
-        maxHealth = Health;
+
     }
 	
 	// Update is called once per frame

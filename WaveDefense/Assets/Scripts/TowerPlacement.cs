@@ -6,10 +6,8 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     private Vector2 mousePos;
-    private bool placed = false;
     private bool placing = true;
     public Texture tex;
-    private Vector3 tiles;
     public UIInfo uiinfo;
     public SpriteRenderer spritetower;
     public Tower_Angriff towerangriff;
@@ -17,7 +15,6 @@ public class TowerPlacement : MonoBehaviour
     void Start()
     {
         mousePos = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
-        tiles=MapInfo.Scale;
     }
 
 	// Update is called once per frame
