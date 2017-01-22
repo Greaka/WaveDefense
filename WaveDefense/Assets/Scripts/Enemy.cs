@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 
     public int Health;
 
+    public int maxHealth;
+
     public float Speed;
 
     public int Bounty;
@@ -22,10 +24,12 @@ public class Enemy : MonoBehaviour
 
     public int Speicherpunkt;
 
+    public Healthbar healtbar;
+
 	// Use this for initialization
     public void Start ()
     {
-        ;
+        maxHealth = Health;
     }
 	
 	// Update is called once per frame
@@ -33,6 +37,7 @@ public class Enemy : MonoBehaviour
     {
         if (Health <= 0)
         {
+            Health = 0;
             isDead = true;
         }
 

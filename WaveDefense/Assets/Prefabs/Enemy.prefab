@@ -89,11 +89,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 6
+  maxHealth: 2
   Speed: 0
   Bounty: 1
   Damage: 3
   isDead: 0
   Speicherpunkt: 0
+  healthBar: {fileID: 0}
 --- !u!212 &212204594997945452
 SpriteRenderer:
   m_ObjectHideFlags: 1
