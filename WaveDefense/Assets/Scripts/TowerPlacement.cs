@@ -26,9 +26,10 @@ public class TowerPlacement : MonoBehaviour
         //button 1 rightclick
         //button 2 middleclick
         mousePos = Input.mousePosition;
+	    var mouseDown = Input.GetMouseButtonDown(0);
 
 
-        if (uiinfo.IsInRect(mousePos)&& Input.GetMouseButtonDown(0))
+        if (uiinfo.IsInRect(mousePos) && mouseDown)
         {
             int index = uiinfo.GetTowerIndex(mousePos);
             
@@ -49,9 +50,9 @@ public class TowerPlacement : MonoBehaviour
             }
 	    }
 
-	    if (placing && Input.GetMouseButtonDown(0) && PlayerStats.PlayerWealth >= towerangriff.cost)
+	    if (placing && mouseDown && PlayerStats.PlayerWealth >= towerangriff.cost)
 	    {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             //Vector2 curtile = mousePos-new Vector2(mousePos.x%1,mousePos.y%1);
 	       // spritetower.transform.position = curtile;
             //Debug.Log(curtile);
