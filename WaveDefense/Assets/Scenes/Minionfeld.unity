@@ -375,7 +375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2c20d14ecd7c2bf489ae6d3e3bf7bc36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a4a7638e28f48c428326d2acad90ea8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
-  tex: {fileID: 2800000, guid: 2c20d14ecd7c2bf489ae6d3e3bf7bc36, type: 3}
+  tex: {fileID: 2800000, guid: 6a4a7638e28f48c428326d2acad90ea8, type: 3}
   uiinfo: {fileID: 878251762}
   spritetower: {fileID: 1407920843}
   towerangriff: {fileID: 114002110042850498, guid: c5269b62ead5eb6419aa13b492fe296c,

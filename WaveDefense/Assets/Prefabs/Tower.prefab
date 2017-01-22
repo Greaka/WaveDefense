@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 5
+  reloadtime: 0.5
   damage: 1
   inRange: {fileID: 58695453347521142}
 --- !u!114 &114587016951924866
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 5
+  reloadtime: 0.5
   damage: 3
   inRange: {fileID: 58695453347521142}
 --- !u!212 &212610785990478714
@@ -181,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 6a4a7638e28f48c428326d2acad90ea8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
