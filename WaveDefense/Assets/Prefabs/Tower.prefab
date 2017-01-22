@@ -38,8 +38,10 @@ GameObject:
   - component: {fileID: 212610785990478714}
   - component: {fileID: 114587016951924866}
   - component: {fileID: 58695453347521142}
+  - component: {fileID: 50998640191804912}
+  - component: {fileID: 61655519898301204}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Look
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,12 +68,32 @@ Transform:
   m_GameObject: {fileID: 1561894490009680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 573.73553, y: 383.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children:
   - {fileID: 4532289029276344}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50998640191804912
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734912233458586}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58695453347521142
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -85,7 +107,21 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 1
+--- !u!61 &61655519898301204
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734912233458586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
 --- !u!114 &114002110042850498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c80c4a4e97ff8c43bc09bb11dcd8329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a_count: 0
-  inRange: {fileID: 0}
+  a_count: 5
+  damage: 1
+  inRange: {fileID: 58695453347521142}
 --- !u!114 &114587016951924866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,8 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c80c4a4e97ff8c43bc09bb11dcd8329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a_count: 0
-  inRange: {fileID: 0}
+  a_count: 5
+  damage: 3
+  inRange: {fileID: 58695453347521142}
 --- !u!212 &212610785990478714
 SpriteRenderer:
   m_ObjectHideFlags: 1

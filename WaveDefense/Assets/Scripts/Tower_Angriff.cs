@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 public class Tower_Angriff : MonoBehaviour {
 
-    public int a_count = 0;
-    private double Enemey;
+    public float a_count = 0F;
+    public float reloadtime = 0.5F;
+    private Enemy enemey;
+    public int damage;
         //Math.Sqrt(Math.Abs(Enemey.Transform.Position.x-transform.position.X)^2+ Math.Abs(Enemey.Transform.Position.x - this.transform.position.X)^2);
     public Collider2D inRange;
+    private bool mayattack = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,19 +20,24 @@ public class Tower_Angriff : MonoBehaviour {
 	}
 	
 	// FixedUpdate is called once per tick
-	void FixedUpdate () {
-        a_count++;
-        if (a_count > 3)
-            attack();
-	}
-
-    public void attack()
+    void FixedUpdate()
     {
-        if (inRange.isTrigger)
+        a_count += Time.deltaTime;
+        if (a_count > reloadtime)
         {
-            //Attack
-            //Enemey.life--;
+            mayattack = true;
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        if (mayattack == true && collider.gameObject.CompareTag("enemy"))
+        {
+            enemey = collider.gameObject.GetComponent<Enemy>();
+            enemey.Health -= damage;
             a_count = 0;
+            mayattack = false;
+            // Debug.Log("Toll!");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Tiled2Unity;
+﻿using System;
+using Tiled2Unity;
 using UnityEngine;
 
 public class MapInfo : MonoBehaviour
@@ -47,6 +48,7 @@ public class MapInfo : MonoBehaviour
 
     public void Update()
     {
+
         Position = gameObject.transform.position;
         Rotation = gameObject.transform.rotation;
         Scale = gameObject.transform.localScale;
