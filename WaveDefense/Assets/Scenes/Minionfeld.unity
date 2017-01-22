@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42fc4e849e287d46a02b1cee8209b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.05
   EnemyCount: 100
   health: 100
   enemyPrefab: {fileID: 1449604968664104, guid: 018f8e4697ceb91469c61fa8e2445e1d,

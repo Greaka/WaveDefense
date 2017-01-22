@@ -9,11 +9,11 @@ using UnityEngine.VR;
 
 public class MoveObjekts : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     public int EnemyCount;
     public int health;
     public GameObject enemyPrefab;
-    int time;               // mit absicht nicht public
+    float time;
 
     private PlayerStats playerStats;
 
@@ -95,21 +95,21 @@ public class MoveObjekts : MonoBehaviour
         DeadEnemies.Add(instance);
     }
 
+    public void FixedUpdate()
+    {
+        time += Time.deltaTime;
+        if (time > 1/speed)
+        {
+            foreach (var enemy in Enemies)
+            {
+                Aktualisierung(enemy);
+            }
+        }
+    }
+
     // Update is called once per frame
     public void Update()
     {
-        int i = 0;
-
-        time++;
-        foreach (Enemy element in Enemies)
-        {
-            if (time > i * (10.0-speed))
-            {
-                Aktualisierung(element);
-            }
-                i++;
-        }
-
         foreach (var enemy in DeadEnemies)
         {
             enemy.Update();

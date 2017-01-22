@@ -14,13 +14,13 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         var position = gameObject.transform.position;
-        if (Input.GetKey("a") && Camera.main.transform.position.x>=0)
+        if (Input.GetKey(KeyCode.A) && Camera.main.transform.position.x>=0)
             position += new Vector3(-1, 0, 0) * Camera.main.orthographicSize / 15;
-        if (Input.GetKey("s"))
+        if (Input.GetKey(KeyCode.S))
             position += new Vector3(0, -1, 0) * Camera.main.orthographicSize / 15;
-        if (Input.GetKey("d"))
+        if (Input.GetKey(KeyCode.D))
             position += new Vector3(1, 0, 0) * Camera.main.orthographicSize / 15;
-        if (Input.GetKey("w"))
+        if (Input.GetKey(KeyCode.W))
             position += new Vector3(0, 1, 0) * Camera.main.orthographicSize / 15;
         position.x = Mathf.Clamp(position.x, 20F,26F);
         position.y = Mathf.Clamp(position.y, -45F, -15F);
