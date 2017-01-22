@@ -48,7 +48,6 @@ public class MapInfo : MonoBehaviour
 
     public void Update()
     {
-
         Position = gameObject.transform.position;
         Rotation = gameObject.transform.rotation;
         Scale = gameObject.transform.localScale;

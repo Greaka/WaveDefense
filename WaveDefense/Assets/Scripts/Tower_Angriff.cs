@@ -7,6 +7,7 @@ using System.Runtime.Remoting.Messaging;
 public class Tower_Angriff : MonoBehaviour {
 
     public float a_count = 0F;
+    public int cost = 10;
     public float reloadtime = 0.5F;
     private Enemy enemey;
     public int damage;

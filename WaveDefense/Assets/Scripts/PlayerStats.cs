@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 
     public static int PlayerHealth = 100;
 
-    public static int PlayerWealth = 0;
+    public static int PlayerWealth = 20;
 
     public static PlayerStats Instance
     {

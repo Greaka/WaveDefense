@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 5
+  cost: 10
   reloadtime: 0.5
   damage: 1
   inRange: {fileID: 58695453347521142}
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a_count: 5
+  cost: 0
   reloadtime: 0.5
   damage: 3
   inRange: {fileID: 58695453347521142}

@@ -88,9 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a377634c040c8e49b4bc55ffc169e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Health: 6
   Speed: 0
-  Bounty: 10
+  Bounty: 1
   Damage: 3
   isDead: 0
   Speicherpunkt: 0

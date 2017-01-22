@@ -6,7 +6,6 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     private Vector2 mousePos;
-    public int cost;
     private bool placed = false;
     private bool placing = true;
     public Texture tex;
@@ -50,15 +49,15 @@ public class TowerPlacement : MonoBehaviour
             }
 	    }
 
-	    if (placing && Input.GetMouseButtonDown(0))
+	    if (placing && Input.GetMouseButtonDown(0) && PlayerStats.PlayerWealth >= towerangriff.cost)
 	    {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 curtile = mousePos-new Vector2(mousePos.x%1,mousePos.y%1);
+            //Vector2 curtile = mousePos-new Vector2(mousePos.x%1,mousePos.y%1);
 	       // spritetower.transform.position = curtile;
-            Debug.Log(curtile);
+            //Debug.Log(curtile);
 	        Tower_Angriff tower = Instantiate(towerangriff);
 	        tower.gameObject.transform.position = mousePos;
-
+	        PlayerStats.PlayerWealth -= tower.cost;
 	    }
 	}
 }
